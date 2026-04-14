@@ -66,6 +66,66 @@ index=* EventCode=4625 | stats count by Account_Name  | where count > 5
 <img width="1920" height="1051" alt="Screenshot From 2026-04-14 12-36-28" src="https://github.com/user-attachments/assets/cbb0c26c-d204-488f-b8ed-4cb4a6bc8fac" />
 
 
+How to analyze data from splunk?
+
+To analyze logs in Splunk, Search Processing Language (SPL) was used. Below are the key queries and what each part does.
+
+
+Basic Search
+
+index=*
+
+- index=* → Searches across all indexes in Splunk
+- Used to verify that logs are being ingested
+
+
+Failed Login Detection
+
+index=* EventCode=4625
+
+- EventCode=4625 → Filters failed login attempts
+- Helps identify authentication failures
+
+
+
+Brute Force Detection
+
+index=* EventCode=4625
+| stats count by Account_Name
+| where count > 5
+
+- stats count by Account_Name → Counts login failures per user
+- where count > 5 → Filters users with multiple failures
+- Used to detect possible brute-force attacks
+
+
+
+Successful Login Monitoring
+
+index=* EventCode=4624
+
+- EventCode=4624 → Shows successful login events
+- Used to track user access
+
+
+
+Privileged Login Detection
+
+index=* EventCode=4672
+
+- EventCode=4672 → Indicates administrative privileges assigned
+- Helps detect high-privilege activity
+
+
+
+Aggregated Visualization Query
+
+index=* 
+| stats count by EventCode
+
+- stats count by EventCode → Groups events by type
+- Used to create charts and dashboards
+
 
 <img width="1920" height="1051" alt="Screenshot From 2026-04-14 12-36-53" src="https://github.com/user-attachments/assets/6850c452-7b89-412d-b260-b6547b1a90df" />
 
