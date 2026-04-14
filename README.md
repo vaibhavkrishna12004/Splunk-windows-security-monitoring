@@ -40,8 +40,7 @@ LOG COLLECTION
 
 Windows Event Logs were forwarded and indexed in Splunk.  The logs of the windows Event viewer and splunk matches thus, verifying the activity.
 
-The main log source used:
-WinEventLog:Security
+The main log source used:  WinEventLog:Security
 
 Once configured, logs started appearing in Splunk search.
 
@@ -59,17 +58,15 @@ Key Event IDs monitored:
 4625 → Failed login attempts
 4624 → Successful logins
 4672 → Privileged (admin) logins
+<img width="1024" height="768" alt="Event viewer log detection" src="https://github.com/user-attachments/assets/a993475d-942f-4ce3-9d5b-33626a31b528" />
 
 Example query used:
 
-index=* EventCode=4625
-| stats count by Account_Name
-| where count > 5
+index=* EventCode=4625 | stats count by Account_Name  | where count > 5
 <img width="1920" height="1051" alt="Screenshot From 2026-04-14 12-36-28" src="https://github.com/user-attachments/assets/cbb0c26c-d204-488f-b8ed-4cb4a6bc8fac" />
 
 
 
-<img width="1024" height="768" alt="Event viewer log detection" src="https://github.com/user-attachments/assets/a993475d-942f-4ce3-9d5b-33626a31b528" />
 <img width="1920" height="1051" alt="Screenshot From 2026-04-14 12-36-53" src="https://github.com/user-attachments/assets/6850c452-7b89-412d-b260-b6547b1a90df" />
 
 <img width="1920" height="1051" alt="Screenshot From 2026-04-14 12-36-59" src="https://github.com/user-attachments/assets/eb816357-e708-495f-82ac-719b99c6e413" />
@@ -107,7 +104,6 @@ This reflects how real-world monitoring systems identify suspicious authenticati
 
 
 CONCLUSION
-
 This project shows how logs from a Windows system can be centralized and analyzed using Splunk. By creating detection queries and dashboards, it becomes possible to monitor user activity and identify potential threats such as brute-force login attempts.
 
 It highlights the importance of log monitoring and how SIEM tools help in detecting suspicious behavior in real environments.
