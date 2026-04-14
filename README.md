@@ -20,9 +20,12 @@ The goal was to simulate how a SOC analyst monitors login activity and detects a
 TOOLS USED
 
 Splunk Enterprise
+
 Splunk Universal Forwarder
+
 Windows Event Viewer
-Kali Linux
+
+
 
 
 
